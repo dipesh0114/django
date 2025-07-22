@@ -24,4 +24,6 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
     path('chai/', include('chai.urls')),  # Include chai app URLs
+
+    path('__reload__/', include('django_browser_reload.urls')),  # For live reloading
 ]
