@@ -20,5 +20,6 @@ from . import views
 
 urlpatterns = [
     path('', views.all_chai, name='all_chai'),  # URL for all chai
+    path('<int:chai_id>/', views.chai_detail, name='chai_detail'),  # URL for chai detail
     
 ]
