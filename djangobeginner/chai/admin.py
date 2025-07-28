@@ -5,8 +5,19 @@ from .models import Chaivariety, ChaiReview, Store, ChaiCertificate
 
 class ChaiReviewInline(admin.TabularInline):
     model = ChaiReview
-    extra = 1 
+    extra = 2
 
+class ChaiVarietyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'type', 'data_added')
+    inlines = [ChaiReviewInline]
 
+class StoreAdmin(admin.ModelAdmin):
+    list_display = ('name', 'location')
+    # filter_horizontal = ('chai_varieties',)  
 
-admin.site.register(Chaivariety)
+class ChaiCertificateAdmin(admin.ModelAdmin):
+    list_display = ('chai', 'certificate_number', 'issued_date', 'valid_until')
+
+admin.site.register(Chaivariety, ChaiVarietyAdmin)
+admin.site.register(ChaiCertificate, ChaiCertificateAdmin)
+admin.site.register(Store, StoreAdmin)  
